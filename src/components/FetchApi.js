@@ -1,9 +1,9 @@
 import React,{useEffect, useState} from 'react'
-
+import './fetchApi.css';
 
 function FetchApi() {
     const [data, setData ] = useState([]);
-
+    const [firstElement, setFirstElement] = useState(null);
     {/*} async function logJSONData() {
         const response = await fetch("https://gbfs.citibikenyc.com/gbfs/en/station_information.json");
         const jsonData = await response.json();
@@ -16,21 +16,34 @@ function FetchApi() {
     }, [])*/}
 
     useEffect(() => {
-        fetch("https://gbfs.citibikenyc.com/gbfs/en/station_information.json")
+        fetch("https://jsonplaceholder.typicode.com/posts")
           .then(response => response.json())
-          .then(data => setData(data));
+          .then(data => setData(data))
+          .catch(err => console.log(err))
+
+         // setFirstElement(data[0]);
       }, []);
 
+
+      const firstE = data[0];
   return (
-    <div>
+    <div className="table" >
         {/*<button onClick={logJSONData}>BIG BUTTOBN</button>
-        {JSON.stringify(data)}*/}
         <ul>
-            {data.map(user => (
-            <li key={user.id}>{user.name}</li>
+          {data.map((list,index) => (
+            <li key={index}>{list.title} </li>
             ))}
         </ul>
+        
+        <p>
+          {firstElement && <p>{firstElement.title}</p>}
+        </p>
 
+        */}
+
+        <p>
+          {firstE.title}
+        </p>
     </div>
   )
 }
