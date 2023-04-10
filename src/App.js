@@ -11,6 +11,7 @@ from 'react-router-dom';
 import Home from './components/home';
 import About from './components/about';
 import Navbar from './components/navbar';
+import FetchApi from './components/FetchApi';
 
 function App() {  
    
@@ -21,11 +22,13 @@ function App() {
           <div className="wrapper">
             <Router>
               <Navbar />
+              
                   <Routes>  
                     <Route exact path='/' element={< Home />}></Route>  
                     <Route exact path='/about' element={< About />}></Route>    
                   </Routes>    
             </Router>
+            <FetchApi />
             </div>
         </div>  
       </>  
